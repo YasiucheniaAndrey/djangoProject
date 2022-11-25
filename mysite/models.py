@@ -10,12 +10,12 @@ class Product(models.Model):
 
 
 class Brand(models.Model):
-    name = models.CharField()
+    name = models.CharField(max_length=50)
     description = models.TextField()
 
 
 class Category(models.Model):
-    category = models.CharField()
+    category = models.CharField(max_length=50)
 
 
 class Review(models.Model):
@@ -24,7 +24,13 @@ class Review(models.Model):
 
 
 class User(models.Model):
-    login_name = models.CharField()
+    login_name = models.CharField(max_length=50)
     id_review = models.IntegerField()
-    id_product_purcaised = models.IntegerField()
-    id_product_added_to_cart = models.IntegerField()
+    id_product_in_order = models.IntegerField()
+
+
+class Order(models.Model):
+    product_id = models.IntegerField()
+    user_id = models.IntegerField()
+    is_paid = models.BooleanField()
+    order_date = models.DateTimeField()
