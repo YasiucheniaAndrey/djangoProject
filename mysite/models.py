@@ -30,7 +30,7 @@ class Review(models.Model):
     author = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
-        default=""
+        default=1
     )
     product = models.ForeignKey(
         'Product',
@@ -50,13 +50,15 @@ class Order(models.Model):
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE
     )
+    PAID = 'order is paid'
+    NOT_PAID = 'order is not paid'
     STATUS = [
-        ('not paid', 'order is not paid yet '),
-        ('paid', 'order is paid')
+        (PAID, 'order is not paid yet '),
+        (NOT_PAID, 'order is paid')
     ]
     status = models.CharField(
-        max_length=8,
+        max_length=20,
         choices=STATUS,
-        default = 'not paid'
+        default = NOT_PAID
     )
     timestamp = models.DateTimeField()
