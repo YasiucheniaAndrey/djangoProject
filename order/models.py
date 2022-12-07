@@ -11,11 +11,11 @@ class Order(models.Model):
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE
     )
-    PAID = 'order is paid'
-    NOT_PAID = 'order is not paid'
+    PAID = 'paid'
+    NOT_PAID = 'ssnot paid'
     STATUS = [
-        (PAID, 'order is not paid yet '),
-        (NOT_PAID, 'order is paid')
+        (PAID, 'order is paid '),
+        (NOT_PAID, 'order is not paid')
     ]
     status = models.CharField(
         max_length=20,
