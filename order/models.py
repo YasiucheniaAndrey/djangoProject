@@ -12,7 +12,7 @@ class Order(models.Model):
         on_delete=models.CASCADE
     )
     PAID = 'paid'
-    NOT_PAID = 'ssnot paid'
+    NOT_PAID = 'snot paid'
     STATUS = [
         (PAID, 'order is paid '),
         (NOT_PAID, 'order is not paid')
@@ -23,4 +23,4 @@ class Order(models.Model):
         default = NOT_PAID
     )
     timestamp = models.DateTimeField()
-# Create your models here.
+
