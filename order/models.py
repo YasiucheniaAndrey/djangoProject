@@ -12,15 +12,18 @@ class Order(models.Model):
         on_delete=models.CASCADE
     )
     PAID = 'paid'
-    NOT_PAID = 'snot paid'
+    NOT_PAID = 'not paid'
     STATUS = [
         (PAID, 'order is paid '),
         (NOT_PAID, 'order is not paid')
     ]
     status = models.CharField(
-        max_length=20,
-        choices=STATUS,
+        max_length = 20,
+        choices = STATUS,
         default = NOT_PAID
     )
     timestamp = models.DateTimeField()
+
+    def __str__(self):
+        return self.product.short_description
 
