@@ -1,12 +1,10 @@
 from django.urls import path
 from . import views
 
+
 app_name = 'product'
 urlpatterns = [
-    path('', views.index, name='index'),
-    path('<int:product_id>/', views.detail, name='detail'),
-#cant change adress to spefifics/product_id
-#path specifics/<int:product_id>
-#with change in index.html
-# #<li><a href="{% url 'product:detail' product.id %}
+#    path('<int:pk>/', views.detail, name='detail'),
+    path('<int:pk>/', views.ProdeuctDetailView.as_view(), name='detail'),
+    path('', views.IndexView.as_view(), name='index'),
 ]
