@@ -5,21 +5,29 @@ from django.urls import reverse
 from django.views import generic
 from .models import Product
 
-class IndexView(generic.ListView):
-    template_name = 'product/index.html'
+class ProductListView(generic.ListView):
+    template_name = 'product/products.html'
     context_object_name = 'product_list'
 
     def get_queryset(self):
         return Product.objects.all()
 
 
+class ProductListViewByCategory(generic.ListView):
+    template_name = 'product/products_by_category.html'
+    model = Product
+
+    # def get_queryset(self, *args, **kwargs):
+    #     qs = super(ProductListViewByCategory, self).get_queryset()
+    #     qs = qs.order_by("-id")
+    #     return qs
+
+
+
 class ProdeuctDetailView(generic.DetailView):
     model = Product
-#    queryset = Product.objects.all()
     template_name = 'product/detail.html'
-#    context_object_name = 'product'
-#    def get_context_data(self, 'pk'):
-#        context = super().get_context_data('pk')
+
 
 
 
