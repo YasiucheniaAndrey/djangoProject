@@ -3,7 +3,10 @@ from django.contrib.auth import login
 from django.urls import reverse
 from .models import Category
 from django.shortcuts import render, redirect
-from .forms import CustomUserCreationForm
+from customauth.admin import UserCreationForm
+
+
+
 
 def dashboard(request):
     return render(request, "mysite/dashboard.html")
@@ -12,10 +15,10 @@ def register(request):
     if request.method == "GET":
         return render(request,
                       "mysite/register.html",
-                      {"form": CustomUserCreationForm}
+                      {"form": UserCreationForm}
                     )
     elif request.method =="POST":
-        form = CustomUserCreationForm(request.POST)
+        form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)
