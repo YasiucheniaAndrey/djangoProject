@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'mysite.apps.MysiteConfig',
     'order',
     'product',
+    'customauth',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -42,7 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
-#AUTH_USER_MODEL = 'accounts.CustomUser'
+AUTH_USER_MODEL = 'customauth.MyUser'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
