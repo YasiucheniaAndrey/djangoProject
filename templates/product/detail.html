@@ -1,3 +1,5 @@
+Hello, {{ user.email|default:'Guest' }}!
+
 <h1>{{ product.category }}</h1>
 <h1>{{ product.short_description }}</h1>
 <ul>
@@ -6,6 +8,13 @@
 <ul>
     {{ product.price }}
 </ul>
+
+
+<form method="post">
+    {% csrf_token %}
+    {{form}}
+    <input type="submit" value="Add to product to order">
+</form>
 
 
 

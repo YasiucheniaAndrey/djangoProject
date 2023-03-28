@@ -1,7 +1,7 @@
 from django.views import generic
 from django.contrib.auth import login
 from django.urls import reverse
-from .models import Category
+from .models import Category, Brand
 from django.shortcuts import render, redirect
 from customauth.admin import UserCreationForm
 
@@ -30,4 +30,11 @@ class CategoryView(generic.ListView):
 
     def get_queryset(self):
         return Category.objects.all()
+
+class BrandView(generic.ListView):
+    template_name = 'mysite/brands_with_description.html'
+    context_object_name = 'brands_list'
+
+    def get_queryset(self):
+        return Brand.objects.all()
 

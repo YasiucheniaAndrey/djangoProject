@@ -28,12 +28,3 @@ class ProdeuctDetailView(generic.DetailView):
     model = Product
     template_name = 'product/detail.html'
 
-
-
-
-# def detail(request, pk):
-#     product = get_object_or_404(Product,pk=pk)
-#     context = {'product_description': product.description,
-#                'product_short_description': product.short_description,
-#                'product_price': product.price}
-#     return render (request, 'product/detail.html', context)
