@@ -35,4 +35,4 @@ class ProductInOrder(models.Model):
         Order,
         on_delete=models.CASCADE
     )
-    quantity = models.SmallIntegerField()
+    quantity = models.SmallIntegerField(default=1)

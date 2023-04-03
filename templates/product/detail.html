@@ -9,11 +9,11 @@ Hello, {{ user.email|default:'Guest' }}!
     {{ product.price }}
 </ul>
 
+<form method="post" action="{% url  'product:add_to_cart' product.id %}">
 
-<form method="post">
     {% csrf_token %}
     {{form}}
-    <input type="submit" value="Add to product to order">
+    <input type="submit" value="Add product to order" >
 </form>
 
 
