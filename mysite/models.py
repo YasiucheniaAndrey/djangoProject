@@ -12,11 +12,8 @@ class Brand(models.Model):
 class Category(models.Model):
     class Meta:
         verbose_name_plural = 'categories'
+        ordering = ["name"]
     name = models.CharField(max_length=50)
 
     def __str__(self):
         return self.name
-
-
-
-

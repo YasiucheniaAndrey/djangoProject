@@ -1,9 +1,12 @@
 from django.views import generic
 from django.contrib.auth import login
 from django.urls import reverse
-from .models import Category
+from .models import Category, Brand
 from django.shortcuts import render, redirect
-from .forms import CustomUserCreationForm
+from customauth.admin import UserCreationForm
+
+
+
 
 def dashboard(request):
     return render(request, "mysite/dashboard.html")
@@ -12,10 +15,10 @@ def register(request):
     if request.method == "GET":
         return render(request,
                       "mysite/register.html",
-                      {"form": CustomUserCreationForm}
+                      {"form": UserCreationForm}
                     )
     elif request.method =="POST":
-        form = CustomUserCreationForm(request.POST)
+        form = UserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
             login(request, user)
@@ -27,4 +30,11 @@ class CategoryView(generic.ListView):
 
     def get_queryset(self):
         return Category.objects.all()
+
+class BrandView(generic.ListView):
+    template_name = 'mysite/brands_with_description.html'
+    context_object_name = 'brands_list'
+
+    def get_queryset(self):
+        return Brand.objects.all()
 

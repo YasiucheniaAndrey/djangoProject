@@ -1,3 +1,5 @@
+Hello, {{ user.email|default:'Guest' }}!
+
 <h1>Product page</h1>
 {% if product_list %}
     <ul>
