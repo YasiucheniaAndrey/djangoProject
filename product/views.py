@@ -57,7 +57,9 @@ def add_to_cart(request, pk):
                     product_in_order.save()
                 return HttpResponseRedirect(reverse('product:detail', args=(product.pk,)))
             else:
-#todo add error message if qantity <= 0
-                return HttpResponseRedirect(reverse('product:detail', args=(product.pk,)))
+#todo add error message if qantity <= 0 переделать форму и добавить ошибку
+                context = {'form': form, 'product':product}
+               # return HttpResponseRedirect(reverse('product:detail', args=(product.pk, )))
+                return render(request, 'product/detail.html', context)
     else:
         return HttpResponseRedirect(reverse('login'))
